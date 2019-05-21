@@ -10,7 +10,7 @@ HTTP Method  : POST
 
 Content-Type : application/json
 
-## Valid requests that should be passed in the body of the request:
+## Valid cities that should be passed in the body of the request:
 
 {"city" : "London"}
 
