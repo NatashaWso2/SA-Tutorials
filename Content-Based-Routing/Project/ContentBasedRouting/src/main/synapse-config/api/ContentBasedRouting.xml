@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/context" name="ContentBasedRouting" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" url-mapping="/route">
+        <inSequence>
+            <property expression="json-eval($.city)" name="city" scope="default" type="STRING"/>
+            <switch source="get-property('city')">
+                <case regex="London">
+                    <log level="custom">
+                        <property expression="fn:concat('Routing to ', get-property('city'))" name="message"/>
+                    </log>
+                    <send>
+                        <endpoint>
+                            <address uri="http://www.mocky.io/v2/594e026c1100004011d6d39c"/>
+                        </endpoint>
+                    </send>
+                </case>
+                <case regex="SanFransisco">
+                    <log level="custom">
+                        <property expression="fn:concat('Routing to ', get-property('city'))" name="message"/>
+                    </log>
+                    <send>
+                        <endpoint>
+                            <address uri="http://www.mocky.io/v2/594e018c1100002811d6d39a"/>
+                        </endpoint>
+                    </send>
+                </case>
+                <default>
+                    <log description="Fault log" level="custom">
+                        <property expression="fn:concat('Invalid city station - ', get-property('city'))" name="message"/>
+                    </log>
+                    <payloadFactory media-type="json">
+                        <format>
+			           		{"Invalid city station" : "$1"}
+			            </format>
+                        <args>
+                            <arg evaluator="xml" expression="get-property('city')" literal="true"/>
+                        </args>
+                    </payloadFactory>
+                    <respond/>
+                </default>
+            </switch>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>
