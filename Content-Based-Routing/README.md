@@ -4,14 +4,10 @@ This sample will route a message based on its content.
 
 ![img](https://github.com/NatashaWso2/SA-Tutorials/blob/master/Content-Based-Routing/Resources/Content-based-routing.png)
 
-Resource URL : http://localhost:8280/context/route
+This will route the cities "London" and "SanFransisco" to a mocky backend and will respond back with their respective station, longitude and latitude. If you provide a city other than "London" and "SanFransisco" it will return an invalid city station response.
 
-HTTP Method  : POST
+## Curl command to invoke the API
 
-Content-Type : application/json
+curl -X POST -H "Content-Type: application/json" -d '{"city" : "London"}' http://localhost:8280/context/route
 
-## Valid cities that should be passed in the body of the request:
-
-{"city" : "London"}
-
-{"city" : "SanFransisco"}
+curl -X POST -H "Content-Type: application/json" -d '{"city" : "SanFransisco"}' http://localhost:8280/context/route
