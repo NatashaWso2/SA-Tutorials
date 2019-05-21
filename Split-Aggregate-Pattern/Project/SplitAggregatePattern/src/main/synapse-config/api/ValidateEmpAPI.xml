@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/validate" name="ValidateEmpAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" url-mapping="/emp">
+        <inSequence>
+            <log level="full"/>
+            <!-- Set the maximum age -->
+            <property name="maxAge" scope="default" type="STRING" value="18"/>
+            <property expression="json-eval($.Age)" name="age" scope="default" type="STRING"/>
+            <filter xpath="get-property('age') > get-property('maxAge')">
+                <then>
+                    <payloadFactory media-type="json">
+                        <format>
+								{"Name" : "$1",
+							     "Status" 	: "Accepted"	
+							    }
+							</format>
+                        <args>
+                            <arg evaluator="json" expression="$.Name"/>
+                        </args>
+                    </payloadFactory>
+                    <respond/>
+                </then>
+                <else>
+                    <payloadFactory media-type="json">
+                        <format>
+								{"Name" : "$1",
+							     "Status" 	: "Rejected",
+							     "Reason": "Age is not more than 18"
+							    }
+							</format>
+                        <args>
+                            <arg evaluator="json" expression="$.Name"/>
+                        </args>
+                    </payloadFactory>
+                    <respond/>
+                </else>
+            </filter>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

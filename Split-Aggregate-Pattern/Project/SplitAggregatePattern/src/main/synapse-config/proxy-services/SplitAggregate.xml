@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="SplitAggregate" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <iterate expression="//jsonArray/jsonElement" id="iterateMed" sequential="true">
+                <target>
+                    <sequence>
+                        <payloadFactory media-type="json">
+                            <format>
+			                	{"Name" : "$1",
+			                	 "Age" 	: "$2"	
+			                	}
+			                </format>
+                            <args>
+                                <arg evaluator="xml" expression="//Name/text()"/>
+                                <arg evaluator="xml" expression="//Age/text()"/>
+                            </args>
+                        </payloadFactory>
+                        <log level="full"/>
+                        <call>
+                            <endpoint>
+                                <address uri="http://localhost:8280/validate/emp"/>
+                            </endpoint>
+                        </call>
+                    </sequence>
+                </target>
+            </iterate>
+            <property name="Aggregated_Responses" scope="default">
+                <jsonObject/>
+            </property>
+            <aggregate id="iterateMed">
+                <completeCondition>
+                    <messageCount max="-1" min="-1"/>
+                </completeCondition>
+                <onComplete enclosingElementProperty="Aggregated_Responses" expression="$body/*[1]" xmlns:ns="http://org.apache.synapse/xsd">
+                    <send/>
+                </onComplete>
+            </aggregate>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+</proxy>
