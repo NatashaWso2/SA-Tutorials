@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="MessageTransformation" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <datamapper config="gov:datamapper/DataMapperConfig.dmc" inputSchema="gov:datamapper/DataMapperConfig_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/DataMapperConfig_outputSchema.json" outputType="XML"/>
+            <log level="custom">
+                <property expression="//Employees" name="####### Message_after_transformation #######"/>
+            </log>
+            <!-- Change message type to JSON -->
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <property expression="json-eval($.Employees)" name="result" scope="default" type="STRING"/>
+            <payloadFactory media-type="json">
+                <format>$1</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:result"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </target>
+</proxy>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_CS8FoHvjEemM3-qIhVl6Zw" type="DataMapper" name="DataMapperConfig.datamapper_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_CcbY0HvjEemM3-qIhVl6Zw" type="2002" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="_Ec7Q8HvjEemM3-qIhVl6Zw" type="3002" fontName="Ubuntu">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Ec7Q8nvjEemM3-qIhVl6Zw" type="5002"/>
+      <children xmi:type="notation:Shape" xmi:id="_EdIsUHvjEemM3-qIhVl6Zw" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_EdIsUnvjEemM3-qIhVl6Zw" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_EdQoIHvjEemM3-qIhVl6Zw" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_EdRPMXvjEemM3-qIhVl6Zw" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_EdTEYHvjEemM3-qIhVl6Zw" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.0/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdTEYXvjEemM3-qIhVl6Zw" x="-11" y="-9"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_EdTEYnvjEemM3-qIhVl6Zw" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.0/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdTEY3vjEemM3-qIhVl6Zw"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdRPMHvjEemM3-qIhVl6Zw"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_EdRPMnvjEemM3-qIhVl6Zw" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_EdRPNHvjEemM3-qIhVl6Zw" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_EdeqkHvjEemM3-qIhVl6Zw" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.1/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdeqkXvjEemM3-qIhVl6Zw" x="-11" y="-9"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_EdfRoHvjEemM3-qIhVl6Zw" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.1/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdfRoXvjEemM3-qIhVl6Zw"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.1"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdRPM3vjEemM3-qIhVl6Zw"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_EdRPNXvjEemM3-qIhVl6Zw" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_EdRPN3vjEemM3-qIhVl6Zw" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_Edi8AHvjEemM3-qIhVl6Zw" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.2/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Edi8AXvjEemM3-qIhVl6Zw" x="-11" y="-9"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_Edi8AnvjEemM3-qIhVl6Zw" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.2/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Edi8A3vjEemM3-qIhVl6Zw"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.2"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdRPNnvjEemM3-qIhVl6Zw"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_EdRPOHvjEemM3-qIhVl6Zw" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdRPOXvjEemM3-qIhVl6Zw" x="-1" y="-11"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_EdRPOnvjEemM3-qIhVl6Zw" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdRPO3vjEemM3-qIhVl6Zw"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdIsUXvjEemM3-qIhVl6Zw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EdIsU3vjEemM3-qIhVl6Zw" type="3020" fontName="Ubuntu">
+        <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdIsVHvjEemM3-qIhVl6Zw" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EdIsVXvjEemM3-qIhVl6Zw" type="3019" fontName="Ubuntu">
+        <element xmi:type="datamapper:OutNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EdIsVnvjEemM3-qIhVl6Zw"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="DataMapperConfig.datamapper#//@input/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ec7Q8XvjEemM3-qIhVl6Zw"/>
+    </children>
+    <element xmi:type="datamapper:Input" href="DataMapperConfig.datamapper#//@input"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CcbY0XvjEemM3-qIhVl6Zw" width="250" height="100"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Ccb_4HvjEemM3-qIhVl6Zw" type="2003" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="_HOy7oHvjEemM3-qIhVl6Zw" type="3011" fontName="Ubuntu">
+      <children xmi:type="notation:DecorationNode" xmi:id="_HOzisHvjEemM3-qIhVl6Zw" type="5003"/>
+      <children xmi:type="notation:Shape" xmi:id="_HO-h0HvjEemM3-qIhVl6Zw" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_HO_I4HvjEemM3-qIhVl6Zw" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_HPBlIHvjEemM3-qIhVl6Zw" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_HPBlInvjEemM3-qIhVl6Zw" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_HPEBYHvjEemM3-qIhVl6Zw" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@output/@treeNode.0/@node.0/@node.0/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HPEBYXvjEemM3-qIhVl6Zw" x="-5" y="4"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_HPEocHvjEemM3-qIhVl6Zw" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="DataMapperConfig.datamapper#//@output/@treeNode.0/@node.0/@node.0/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HPEocXvjEemM3-qIhVl6Zw"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="DataMapperConfig.datamapper#//@output/@treeNode.0/@node.0/@node.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HPBlIXvjEemM3-qIhVl6Zw"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_HPCMMHvjEemM3-qIhVl6Zw" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@output/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HPCMMXvjEemM3-qIhVl6Zw" x="-1" y="-11"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_HPCMMnvjEemM3-qIhVl6Zw" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="DataMapperConfig.datamapper#//@output/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HPCMM3vjEemM3-qIhVl6Zw"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="DataMapperConfig.datamapper#//@output/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HO-h0XvjEemM3-qIhVl6Zw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_HO_I4XvjEemM3-qIhVl6Zw" type="3020" fontName="Ubuntu">
+        <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@output/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HO_I4nvjEemM3-qIhVl6Zw" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_HO_I43vjEemM3-qIhVl6Zw" type="3019" fontName="Ubuntu">
+        <element xmi:type="datamapper:OutNode" href="DataMapperConfig.datamapper#//@output/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HO_I5HvjEemM3-qIhVl6Zw"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="DataMapperConfig.datamapper#//@output/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HOy7oXvjEemM3-qIhVl6Zw"/>
+    </children>
+    <element xmi:type="datamapper:Output" href="DataMapperConfig.datamapper#//@output"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ccb_4XvjEemM3-qIhVl6Zw" x="756" y="192" width="250" height="100"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Is87sHvjEemM3-qIhVl6Zw" type="2006" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="_ItSS4HvjEemM3-qIhVl6Zw" type="3012" fontName="Ubuntu">
+      <children xmi:type="notation:Shape" xmi:id="_ItjYoHvjEemM3-qIhVl6Zw" type="3013" fontName="Ubuntu">
+        <children xmi:type="notation:Shape" xmi:id="_IuGLMHvjEemM3-qIhVl6Zw" type="3014" fontName="Ubuntu">
+          <children xmi:type="notation:Shape" xmi:id="_IuLDsHvjEemM3-qIhVl6Zw" type="3015" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@leftContainer/@leftConnectors.0/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IuLqwHvjEemM3-qIhVl6Zw"/>
+          </children>
+          <element xmi:type="datamapper:OperatorLeftConnector" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@leftContainer/@leftConnectors.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IuGLMXvjEemM3-qIhVl6Zw"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_IuP8MHvjEemM3-qIhVl6Zw" type="3014" fontName="Ubuntu">
+          <children xmi:type="notation:Shape" xmi:id="_IuQjQHvjEemM3-qIhVl6Zw" type="3015" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@leftContainer/@leftConnectors.1/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IuQjQXvjEemM3-qIhVl6Zw"/>
+          </children>
+          <element xmi:type="datamapper:OperatorLeftConnector" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@leftContainer/@leftConnectors.1"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IuP8MXvjEemM3-qIhVl6Zw"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_LjBw8HvjEemM3-qIhVl6Zw" type="3014" fontName="Ubuntu">
+          <children xmi:type="notation:Shape" xmi:id="_LjE0QHvjEemM3-qIhVl6Zw" type="3015" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@leftContainer/@leftConnectors.2/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LjE0QXvjEemM3-qIhVl6Zw"/>
+          </children>
+          <element xmi:type="datamapper:OperatorLeftConnector" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@leftContainer/@leftConnectors.2"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LjBw8XvjEemM3-qIhVl6Zw"/>
+        </children>
+        <element xmi:type="datamapper:OperatorLeftContainer" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@leftContainer"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ItjYoXvjEemM3-qIhVl6Zw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_ItjYonvjEemM3-qIhVl6Zw" type="3016" fontName="Ubuntu">
+        <children xmi:type="notation:Shape" xmi:id="_IuWp4HvjEemM3-qIhVl6Zw" type="3017" fontName="Ubuntu">
+          <children xmi:type="notation:Shape" xmi:id="_IuZGIHvjEemM3-qIhVl6Zw" type="3018" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IuZGIXvjEemM3-qIhVl6Zw"/>
+          </children>
+          <element xmi:type="datamapper:OperatorRightConnector" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IuWp4XvjEemM3-qIhVl6Zw"/>
+        </children>
+        <element xmi:type="datamapper:OperatorRightContainer" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@rightContainer"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ItjYo3vjEemM3-qIhVl6Zw"/>
+      </children>
+      <element xmi:type="datamapper:OperatorBasicContainer" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ItSS4XvjEemM3-qIhVl6Zw"/>
+    </children>
+    <element xmi:type="datamapper:Concat" href="DataMapperConfig.datamapper#//@operators.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Is87sXvjEemM3-qIhVl6Zw" x="454" y="424"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_CS8FoXvjEemM3-qIhVl6Zw"/>
+  <element xmi:type="datamapper:DataMapperRoot" href="DataMapperConfig.datamapper#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_JiFz8HvjEemM3-qIhVl6Zw" type="4001" source="_EdTEYnvjEemM3-qIhVl6Zw" target="_IuLDsHvjEemM3-qIhVl6Zw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_JiFz8XvjEemM3-qIhVl6Zw" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.0/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JiFz8nvjEemM3-qIhVl6Zw" points="[-1, 0, -105, -193]$[103, 193, -1, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JigDoHvjEemM3-qIhVl6Zw" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JigqsHvjEemM3-qIhVl6Zw" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_MALnAHvjEemM3-qIhVl6Zw" type="4001" source="_EdfRoHvjEemM3-qIhVl6Zw" target="_IuQjQHvjEemM3-qIhVl6Zw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_MALnAXvjEemM3-qIhVl6Zw" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.1/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MALnAnvjEemM3-qIhVl6Zw" points="[-1, 0, -105, -198]$[103, 198, -1, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MANcMHvjEemM3-qIhVl6Zw" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MANcMXvjEemM3-qIhVl6Zw" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_MskL4HvjEemM3-qIhVl6Zw" type="4001" source="_Edi8AnvjEemM3-qIhVl6Zw" target="_LjE0QHvjEemM3-qIhVl6Zw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_MskL4XvjEemM3-qIhVl6Zw" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="DataMapperConfig.datamapper#//@input/@treeNode.0/@node.0/@node.2/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MskL4nvjEemM3-qIhVl6Zw" points="[-1, 0, -105, -203]$[103, 203, -1, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Msq5kHvjEemM3-qIhVl6Zw" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Msq5kXvjEemM3-qIhVl6Zw" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_PWie0HvjEemM3-qIhVl6Zw" type="4001" source="_IuZGIHvjEemM3-qIhVl6Zw" target="_HPEBYHvjEemM3-qIhVl6Zw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_PWie0XvjEemM3-qIhVl6Zw" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="DataMapperConfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PWie0nvjEemM3-qIhVl6Zw" points="[-1, 0, 26, 189]$[-28, -189, -1, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PWsP0HvjEemM3-qIhVl6Zw" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PWs24HvjEemM3-qIhVl6Zw" id="CENTER"/>
+  </edges>
+</notation:Diagram>
