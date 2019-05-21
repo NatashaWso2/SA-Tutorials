@@ -2,6 +2,8 @@
 
 This sample will transform the message using the Data Mapper and Payload Factory mediator.
 
+![img](https://github.com/NatashaWso2/SA-Tutorials/blob/master/Message-Transformation/Resources/Message-transformation.png)
+
 The client would pass the following XML payload with the firstname, middlename and lastname of each employee separately.
 
 ```xml
@@ -43,5 +45,19 @@ Using the payload factory mediator the resulting XML will be converted to a JSON
 ````
 ## Curl command to invoke the API
 
-curl -X POST -H "Content-Type: text/xml" -d "<Employees> <Employee> <FirsName>Albus</FirsName> <MiddleName>Severus</MiddleName> <LastName>Potter</LastName> </Employee> <Employee>
-      <FirsName>Lily</FirsName> <MiddleName>Evans</MiddleName> <LastName>Potter</LastName> </Employee> </Employees>" https://localhost:9443/services/MessageTransformation
+Save the following request to a file called "request.xml".
+```xml
+<Employees>
+   <Employee>
+      <FirsName>Albus</FirsName>
+      <MiddleName>Severus</MiddleName>
+      <LastName>Potter</LastName>
+   </Employee>
+   <Employee>
+      <FirsName>Lily</FirsName>
+      <MiddleName>Evans</MiddleName>
+      <LastName>Potter</LastName>
+   </Employee>
+</Employees>
+```
+curl -X POST -H "Content-Type: text/xml" -d @request.xml  https://localhost:9443/services/MessageTransformation
