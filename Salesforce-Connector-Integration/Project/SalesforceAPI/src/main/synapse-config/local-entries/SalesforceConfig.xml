@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="SalesforceConfig" xmlns="http://ws.apache.org/ns/synapse">
+    <salesforce.init>
+        <username>SALESFORCE_USERNAME</username>
+        <password>PASSWORD:SECURITY_TOKEN</password>
+        <loginUrl>https://login.salesforce.com/services/Soap/u/40.0</loginUrl>
+        <blocking>false</blocking>
+    </salesforce.init>
+</localEntry>

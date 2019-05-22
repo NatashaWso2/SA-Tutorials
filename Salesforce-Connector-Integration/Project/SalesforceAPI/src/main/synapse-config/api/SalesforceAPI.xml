@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/sfdc" name="SalesforceAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" url-mapping="/accounts">
+        <inSequence>
+            <salesforce.query configKey="SalesforceConfig">
+                <batchSize>10</batchSize>
+                <queryString>
+                	select Id, Name, AccountNumber, Type, BillingState, ShippingState, Phone, NumberOfEmployees, Ownership, Industry from Account
+                </queryString>
+            </salesforce.query>
+            <!-- Execute the following to get the other batches -->
+            <iterate continueParent="true" expression="//sfdc:iterator" xmlns:sfdc="http://wso2.org/salesforce/adaptor">
+                <target>
+                    <sequence>
+                        <salesforce.queryMore>
+                            <batchSize>10</batchSize>
+                        </salesforce.queryMore>
+                    </sequence>
+                </target>
+            </iterate>
+            <send/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/accounts/{id}">
+        <inSequence>
+            <payloadFactory media-type="xml">
+                <format>
+                    <sfdc:sObjects xmlns:sfdc="sfdc">
+                        <sfdc:Ids>$1</sfdc:Ids>
+                    </sfdc:sObjects>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('uri.var.id')"/>
+                </args>
+            </payloadFactory>
+            <salesforce.retrieve configKey="SalesforceConfig">
+                <fieldList>Id,Name,AccountNumber,Type,BillingState,ShippingState,Phone,NumberOfEmployees,Ownership,Industry</fieldList>
+                <objectType>Account</objectType>
+                <objectIDS xmlns:sfdc="sfdc">{//sfdc:sObjects}</objectIDS>
+            </salesforce.retrieve>
+            <send/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>
