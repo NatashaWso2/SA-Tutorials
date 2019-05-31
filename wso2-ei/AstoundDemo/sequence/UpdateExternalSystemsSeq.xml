@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="UpdateExternalSystemsSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <!-- Save properties of the contract entity that is coming from Salesforce -->
+    <property expression="$body//jsonObject/sobject/Id" name="contract_id" scope="default" type="STRING"/>
+    <property expression="$body//jsonObject/sobject/Company_Name__c" name="company_name" scope="default" type="STRING"/>
+    <property expression="$body//jsonObject/sobject/Contract_signed_date__c" name="start_date" scope="default" type="STRING"/>
+    <property expression="$body//jsonObject/sobject/End_date__c" name="end_date" scope="default" type="STRING"/>
+    <property expression="$body//jsonObject/sobject/Contract_amount__c" name="contract_amount" scope="default" type="STRING"/>
+    <property expression="$body//jsonObject/sobject/Company_tax_ID_number__c" name="company_tax_id" scope="default" type="STRING"/>
+    <property name="project_manager" scope="default" type="STRING" value="John Doe"/>
+    <!-- Get fields to construct the address block -->
+    <property expression="$body//jsonObject/sobject/Street__c" name="street" scope="default" type="STRING"/>
+    <property expression="$body//jsonObject/sobject/City__c" name="city" scope="default" type="STRING"/>
+    <property expression="$body//jsonObject/sobject/State__c" name="state" scope="default" type="STRING"/>
+    <property expression="$body//jsonObject/sobject/Postal_Code__c" name="postal_code" scope="default" type="STRING"/>
+    <property expression="$body//jsonObject/sobject/Country__c" name="country" scope="default" type="STRING"/>
+    <!-- Construct the address block -->
+    <script language="js"><![CDATA[var address = mc.getProperty("street") + "," + mc.getProperty("city")  + "," + mc.getProperty("state") + ","  + mc.getProperty("postal_code") + "," + mc.getProperty("country"); 
+               mc.setProperty("company_address", String(address));]]></script>
+    <!-- Generate project id needed for Onepoint PPM -->
+    <script language="js"><![CDATA[var result = '';
+			   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			   var charactersLength = characters.length;
+			   for ( var i = 0; i < 15; i++ ) {
+			      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+			   }
+               mc.setProperty("gen_project_id", String(result));]]></script>
+    <property expression="get-property('gen_project_id')" name="project_id" scope="default" type="STRING"/>
+    <!-- Add data to Onepoint PPM (Project Managment Solution) -->
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <payloadFactory media-type="json">
+        <format>
+		 {
+		 	"id" : "$1",
+		 	"project_id" : "$2",
+		 	"company_name" : "$3",
+		 	"company address" : "$4",
+		 	"project_manager" : "$5",
+		 	"project_start_date" : "$6",
+		 	"planned_end_date" : "$7"
+		 }
+		 </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('contract_id')"/>
+            <arg evaluator="xml" expression="get-property('project_id')"/>
+            <arg evaluator="xml" expression="get-property('company_name')"/>
+            <arg evaluator="xml" expression="get-property('company_address')"/>
+            <arg evaluator="xml" expression="get-property('project_manager')"/>
+            <arg evaluator="xml" expression="get-property('start_date')"/>
+            <arg evaluator="xml" expression="get-property('end_date')"/>
+        </args>
+    </payloadFactory>
+    <call>
+        <endpoint>
+            <address uri="http://localhost:3001/contract_entities"/>
+        </endpoint>
+    </call>
+    <!-- Calculate the project amount to be added in Saage Intaact (Finance System) -->
+    <script language="js"><![CDATA[var contract_amt = Number(mc.getProperty("contract_amount"));
+               var amt = contract_amt + (contract_amt * 0.2);
+               mc.setProperty("project_amount", Number(amt));]]></script>
+    <!-- Add data to Saage Intaact (Finance System) -->
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <payloadFactory media-type="json">
+        <format>
+         {
+            "id" : "$1",
+            "project_id" : "$2",
+            "company_name" : "$3",
+            "company address" : "$4",
+            "company_tax_id" : "$5",
+            "project_manager" : "$6",
+            "project_amount" : "$7"
+         }       
+         </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('contract_id')"/>
+            <arg evaluator="xml" expression="get-property('project_id')"/>
+            <arg evaluator="xml" expression="get-property('company_name')"/>
+            <arg evaluator="xml" expression="get-property('company_address')"/>
+            <arg evaluator="xml" expression="get-property('company_tax_id')"/>
+            <arg evaluator="xml" expression="get-property('project_manager')"/>
+            <arg evaluator="xml" expression="get-property('project_amount')"/>
+        </args>
+    </payloadFactory>
+    <call>
+        <endpoint>
+            <address uri="http://localhost:3002/project_entities"/>
+        </endpoint>
+    </call>
+    <!-- Update project_id in Salesforce -->
+    <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
+    <property name="ContentType" scope="axis2" type="STRING" value="application/xml"/>
+    <property name="Content-Type" scope="default" type="STRING" value="application/xml"/>
+    <payloadFactory media-type="xml">
+        <format>
+            <sfdc:sObjects type="Entity__c" xmlns:sfdc="sfdc">
+                <sfdc:sObject>
+                    <sfdc:Id>$1</sfdc:Id>
+                    <sfdc:Project_ID__c>$2</sfdc:Project_ID__c>
+                </sfdc:sObject>
+            </sfdc:sObjects>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('contract_id')"/>
+            <arg evaluator="xml" expression="get-property('project_id')"/>
+        </args>
+    </payloadFactory>
+    <salesforce.update configKey="SalesforceConfiguration">
+        <allOrNone>0</allOrNone>
+        <allowFieldTruncate>0</allowFieldTruncate>
+        <sobjects xmlns:sfdc="sfdc">{//sfdc:sObjects}</sobjects>
+    </salesforce.update>
+    <!-- Construct the payload -->
+    <payloadFactory media-type="json">
+        <format>
+		 {
+		 	"Project_ID" : "$1",
+		 	"Customer_Name" : "$2",
+		 	"Project_Amount" : "$3"
+		 }
+		 </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('project_id')"/>
+            <arg evaluator="xml" expression="fn:upper-case(get-property('company_name'))"/>
+            <arg evaluator="xml" expression="get-property('project_amount')"/>
+        </args>
+    </payloadFactory>
+    <!-- Write the payload to a database & Write payload to a FTP location -->
+    <clone>
+        <target>
+            <sequence>
+                <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                <property expression="fn:concat(get-property('company_name'), '-', get-property('project_id'),'.json')" name="transport.vfs.ReplyFileName" scope="transport" type="STRING"/>
+                <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+                <call>
+                    <endpoint>
+                        <address uri="vfs:ftp://username:password@hostname[: port][absolute-path-to-directory]"/>
+                    </endpoint>
+                </call>
+                <drop/>
+            </sequence>
+        </target>
+        <target>
+            <sequence>
+                <header name="Accept" scope="transport" value="application/json"/>
+                <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                <property name="ContentType" scope="axis2" type="STRING" value="application/json"/>
+                <call>
+                    <endpoint>
+                        <address uri="http://localhost:8280/odata/AstoundCommService/entity/project"/>
+                    </endpoint>
+                </call>
+                <drop/>
+            </sequence>
+        </target>
+    </clone>
+    <drop/>
+</sequence>
