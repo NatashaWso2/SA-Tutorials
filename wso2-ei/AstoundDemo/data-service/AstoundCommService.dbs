@@ -1,9 +1,8 @@
-<data name="AstoundCommService" serviceNamespace="" serviceGroup="">
-    <description/>
-    <config id="projectEntity">
-        <property name="org.wso2.ws.dataservice.user">USERNAME</property>
-        <property name="org.wso2.ws.dataservice.password">PASSWORD</property>
-        <property name="org.wso2.ws.dataservice.protocol">jdbc:mysql://localhost:3306/entity</property>
-        <property name="org.wso2.ws.dataservice.driver">com.mysql.jdbc.Driver</property>
-    </config>
+<data name="AstoundCommService" transports="http https">
+   <config enableOData="true" id="entity">
+      <property name="username">USERNAME</property>
+      <property name="password">PASSWORD</property>
+      <property name="url">jdbc:mysql://localhost:3306/entity</property>
+      <property name="driverClassName">com.mysql.jdbc.Driver</property>
+   </config>
 </data>
