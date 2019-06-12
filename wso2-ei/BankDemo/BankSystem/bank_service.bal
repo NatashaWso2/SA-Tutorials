@@ -8,7 +8,7 @@ mysql:Client bankDB = new({
         port: 3306,
         name: "bankdb",
         username: "root",
-        password: "root123456789",
+        password: "root",
         dbOptions: { useSSL: false }
 });
 
