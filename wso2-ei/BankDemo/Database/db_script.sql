@@ -1,5 +1,5 @@
 CREATE database bankdb;
-Use bankdb;
+USE bankdb;
 CREATE TABLE accounts(accountId int  NOT NULL, balance decimal(13,2) NOT NULL, PRIMARY KEY (accountId));
 INSERT INTO accounts (accountId, balance) VALUES (110011, 12000.00);
 INSERT INTO accounts (accountId, balance) VALUES (110012, 15500.00);
