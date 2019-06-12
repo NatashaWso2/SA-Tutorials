@@ -3,8 +3,6 @@
     <resource methods="POST" url-mapping="/withdraw">
         <inSequence>
             <!-- Save the account id -->
-            <!-- Transaction not successful -->
-            <!-- Transaction successful -->
             <property expression="$body//transaction/id" name="uri.var.accountId" scope="default" type="INTEGER"/>
             <property expression="$body//transaction/id" name="accountId" scope="default" type="INTEGER"/>
             <!-- Save the amount that needs to be withdrawn -->
@@ -19,49 +17,51 @@
                     <http method="post" uri-template="http://localhost:9090/bank/withdraw"/>
                 </endpoint>
             </call>
-            <filter regex="Transaction was completed successfully" source="json-eval($.success)">
-                <then>
-                    <property expression="json-eval($.message)" name="successMsg" scope="default" type="STRING"/>
-                    <!-- Get the new balance -->
-                    <call>
-                        <endpoint>
-                            <http method="get" uri-template="http://localhost:9090/bank/accounts/{uri.var.accountId}"/>
-                        </endpoint>
-                    </call>
-                    <property expression="json-eval($.balance)" name="updatedBalance" scope="default" type="STRING"/>
-                    <!-- Upsert records  -->
-                    <payloadFactory media-type="xml">
-                        <format>
-                            <_postaccount_upsert>
-                                <accountId>$1</accountId>
+            <filter source="json-eval($.success)" regex="Transaction was completed successfully">
+			    <then>
+			    	<!-- Transaction successful -->			    	 
+			    	<property expression="json-eval($.message)" name="successMsg" scope="default" type="STRING"/>
+		            <!-- Get the new balance -->
+		            <call>
+		                <endpoint>
+		                    <http method="get" uri-template="http://localhost:9090/bank/accounts/{uri.var.accountId}"/>
+		                </endpoint>
+		            </call>
+		            <property expression="json-eval($.balance)" name="updatedBalance" scope="default" type="STRING"/>
+		            <!-- Upsert records  -->
+		            <payloadFactory media-type="xml">
+                    	<format>
+                        	<_postaccount_upsert>
+                            	<accountId>$1</accountId>
                                 <balance>$2</balance>
                             </_postaccount_upsert>
-                        </format>
-                        <args>
-                            <arg evaluator="xml" expression="get-property('accountId')" literal="true"/>
+                         </format>
+                         <args>
+                         	<arg evaluator="xml" expression="get-property('accountId')" literal="true"/>
                             <arg evaluator="xml" expression="get-property('updatedBalance')" literal="true"/>
-                        </args>
-                    </payloadFactory>
-                    <call>
-                        <endpoint>
-                            <http method="post" uri-template="http://localhost:8280/services/AccountDataService/account/upsert"/>
-                        </endpoint>
-                    </call>
-                    <!-- Update the customer with a success message -->
-                    <payloadFactory media-type="json">
-                        <format>
+                         </args>
+                     </payloadFactory>
+                     <call>
+			         	<endpoint>
+			            	<http method="post" uri-template="http://localhost:8280/services/AccountDataService/account/upsert"/>
+			            </endpoint>
+		            </call>
+		            <!-- Update the customer with a success message -->
+		            <payloadFactory media-type="json">
+		            	<format>
 		            		{"message" : "$1"}
 		            	</format>
-                        <args>
-                            <arg evaluator="xml" expression="get-property('successMsg')"/>
-                        </args>
-                    </payloadFactory>
-                    <respond/>
-                </then>
-                <else>
-                    <respond/>
-                </else>
-            </filter>
+		            	<args>
+		            		<arg expression="get-property('successMsg')"/>
+		            	</args>
+		            </payloadFactory>
+		            <respond/>
+			    </then>
+			    <else>
+			    	<!-- Transaction not successful -->
+			    	<respond/>
+			    </else>
+			</filter>
         </inSequence>
         <outSequence>
             <send/>
@@ -98,6 +98,7 @@
                                     <address uri="http://localhost:8280/services/AccountDataService/account"/>
                                 </endpoint>
                             </call>
+                            <!-- Update the balance and 'updated' flag to '1' -->
                             <payloadFactory media-type="json">
                                 <format>
 		                        { "message": "An amount of $1 was withdrawn from account with id $2. Available balance is $3"}
@@ -108,7 +109,6 @@
                                     <arg evaluator="xml" expression="get-property('newBalance')" literal="true"/>
                                 </args>
                             </payloadFactory>
-                            <!-- Update the balance and 'updated' flag to '1' -->
                             <respond/>
                         </then>
                         <else>
@@ -126,6 +126,7 @@
                         </else>
                     </filter>
                     <respond/>
+                    <!-- Check if the current balance is greater than the withdraw amount -->
                 </then>
                 <else>
                     <payloadFactory media-type="json">
