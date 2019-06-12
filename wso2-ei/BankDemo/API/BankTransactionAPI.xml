@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/transaction" name="BankTransaction" xmlns="http://ws.apache.org/ns/synapse">
+<api context="/transaction" name="BankTransactionAPI" xmlns="http://ws.apache.org/ns/synapse">
     <resource methods="POST" url-mapping="/withdraw">
         <inSequence>
             <!-- Save the account id -->
