@@ -1,0 +1,71 @@
+<data name="AccountDataService" transports="http https local">
+   <config enableOData="false" id="Account">
+      <property name="driverClassName">com.mysql.jdbc.Driver</property>
+      <property name="url">jdbc:mysql://localhost:3306/transactiondb</property>
+      <property name="username">root</property>
+      <property name="password">root123456789</property>
+   </config>
+   <query id="GetAllAccounts" useConfig="Account">
+      <sql>select accountId, balance, updated from accounts</sql>
+      <result element="Entries" rowName="Entry">
+         <element column="accountId" name="accountId" xsdType="string"/>
+         <element column="balance" name="balance" xsdType="string"/>
+         <element column="updated" name="updated" xsdType="string"/>
+      </result>
+   </query>
+   <query id="GetAccount" useConfig="Account">
+      <sql>select accountId, balance, updated from accounts where accountId=:accountId</sql>
+      <result element="Entries" rowName="Entry">
+         <element column="accountId" name="accountId" xsdType="string"/>
+         <element column="balance" name="balance" xsdType="string"/>
+         <element column="updated" name="updated" xsdType="string"/>
+      </result>
+      <param name="accountId" optional="false" sqlType="INTEGER"/>
+   </query>
+   <query id="UpdateAccount" useConfig="Account">
+      <sql>update accounts set balance=:balance, updated='1' where accountId=:accountId</sql>
+      <param name="balance" optional="false" sqlType="DOUBLE"/>
+      <param name="accountId" optional="false" sqlType="INTEGER"/>
+   </query>
+   <query id="GetUpdatedAccounts" useConfig="Account">
+      <sql>select accountId, balance from accounts where updated='1'</sql>
+      <result element="Entries" rowName="Entry">
+         <element column="accountId" name="accountId" xsdType="string"/>
+         <element column="balance" name="balance" xsdType="string"/>
+      </result>
+   </query>
+   <query id="RemoveUpdateFlag" useConfig="Account">
+      <sql>update accounts set updated = '0' where updated= '1'</sql>
+   </query>
+   <query id="UpsertAccount" useConfig="Account">
+      <sql>replace into  accounts (accountId, balance)  values(:accountId,:balance)</sql>
+      <param name="accountId" optional="false" sqlType="INTEGER"/>
+      <param name="balance" optional="false" sqlType="DOUBLE"/>
+   </query>
+   <resource method="GET" path="accounts">
+      <call-query href="GetAllAccounts"/>
+   </resource>
+   <resource method="GET" path="accounts/{accountId}">
+      <call-query href="GetAccount">
+         <with-param name="accountId" query-param="accountId"/>
+      </call-query>
+   </resource>
+   <resource method="PUT" path="account" returnRequestStatus="true">
+      <call-query href="UpdateAccount">
+         <with-param name="balance" query-param="balance"/>
+         <with-param name="accountId" query-param="accountId"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="accounts/updated">
+      <call-query href="GetUpdatedAccounts"/>
+   </resource>
+   <resource disableStreaming="true" method="GET" path="accounts/updateflag">
+      <call-query href="RemoveUpdateFlag"/>
+   </resource>
+   <resource method="POST" path="account/upsert" returnRequestStatus="true">
+      <call-query href="UpsertAccount">
+         <with-param name="accountId" query-param="accountId"/>
+         <with-param name="balance" query-param="balance"/>
+      </call-query>
+   </resource>
+</data>
